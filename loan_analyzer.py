@@ -96,10 +96,8 @@ print(f"Future value of the loan: $ {future_value:,.2f}\nRemaining months on the
 # YOUR CODE HERE!
 
 minimum_required_return = 0.20
-
-def calculate_fair_value(future_value, discount_rate, remaining_months):
-    present_value = future_value / (1 + discount_rate/12) ** remaining_months
-    return present_value
+loan_fair_value = future_value / (1 + minimum_required_return/12) ** remaining_months
+print(f"Calculated fair value (npv) of the loan: $ {loan_fair_value:,.2f}")
 
 # If Present Value represents what the loan is really worth, does it make sense to buy the loan at its cost?
 # @TODO: Write a conditional statement (an if-else statement) to decide if the present value represents the loan's fair value.
@@ -107,6 +105,12 @@ def calculate_fair_value(future_value, discount_rate, remaining_months):
 #    Else, the present value of the loan is less than the loan cost, then print a message that says that the loan is too expensive and not worth the price.
 # YOUR CODE HERE!
 
+loan_price = loan.get("loan_price")
+if loan_fair_value >= loan_price:
+    print(f"The npv of the loan is $ {loan_fair_value:,.2f}. At a purchase price of {loan_price:,.2f},\nthe loan is worth at least the cost to buy it.")
+else:
+    print(f"The npv of the loan is $ {loan_fair_value:,.2f}. At a purchase price of {loan_price:,.2f},\nthe loan is too expensive and not worth the price.")
+line_break(50,"before")
 
 """Part 3: Perform Financial Calculations.
 
@@ -117,6 +121,12 @@ Perform financial calculations using functions.
     b. The function should return the `present_value` for the loan.
 2. Use the function to calculate the present value of the new loan given below.
     a. Use an `annual_discount_rate` of 0.2 for this new loan calculation.
+"""
+"""
+def calculate_fair_value(future_value, discount_rate, remaining_months):
+    present_value = future_value / (1 + discount_rate/12) ** remaining_months
+    return present_value
+loan_fair_value = calculate_fair_value(future_value, minimum_required_return, remaining_months)
 """
 
 # Given the following loan data, you will need to calculate the present value for the loan
