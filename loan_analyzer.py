@@ -1,4 +1,12 @@
 # coding: utf-8
+def line_break(repeats, space_location="none"):
+    if space_location == "before":
+        print(f"\n{'-' * repeats}")
+    elif space_location == "after":
+        print(f"{'-' * repeats}\n")
+    else:
+        print(f"{'-' * repeats}")
+
 import csv
 from pathlib import Path
 
@@ -19,15 +27,26 @@ loan_costs = [500, 600, 200, 1000, 450]
 # Print the number of loans from the list
 # YOUR CODE HERE!
 
+line_break(100,"before")
+total_number_of_loans = len(loan_costs)
+print(f"There are {total_number_of_loans} loans in the list.")
+
 # What is the total of all loans?
 # @TODO: Use the `sum` function to calculate the total of all loans in the list.
 # Print the total value of the loans
 # YOUR CODE HERE!
 
+sum_of_loan_values = sum(loan_costs)
+print(f"The total value of the loans is $ {sum_of_loan_values:,.2f}")
+
 # What is the average loan amount from the list?
 # @TODO: Using the sum of all loans and the total number of loans, calculate the average loan price.
 # Print the average loan amount
 # YOUR CODE HERE!
+
+average_loan_amount = sum_of_loan_values / total_number_of_loans
+print(f"The average loan amount is $ {average_loan_amount:,.2f}")
+line_break(50)
 
 """Part 2: Analyze Loan Data.
 
@@ -107,7 +126,7 @@ new_loan = {
 # @TODO: Use the function to calculate the present value of the new loan given below.
 #    Use an `annual_discount_rate` of 0.2 for this new loan calculation.
 # YOUR CODE HERE!
-print(f"The present value of the loan is: {present_value}")
+# print(f"The present value of the loan is: {present_value}")
 
 
 """Part 4: Conditionally filter lists of loans.
@@ -176,7 +195,7 @@ Output this list of inexpensive loans to a csv file
 header = ["loan_price", "remaining_months", "repayment_interval", "future_value"]
 
 # Set the output file path
-output_path = Path("inexpensive_loans.csv")
+# output_path = Path("inexpensive_loans.csv")
 
 # @TODO: Use the csv library and `csv.writer` to write the header row
 # and each row of `loan.values()` from the `inexpensive_loans` list.
