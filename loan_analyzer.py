@@ -291,10 +291,10 @@ output_path = Path("inexpensive_loans.csv")
 # call the function to write inexpensive loans to csv
 write_to_csv(output_path, inexpensive_loans, header)
 
-# assign name of expensive loans csv file to be written
+# BONUS: assign name of expensive loans csv file to be written
 output_path = Path("expensive_loans.csv")
 
-# call the function to write expensive loans to csv
+# BONUS: call the function to write expensive loans to csv
 write_to_csv(output_path, expensive_loans, header)
 
 # console output formatting
