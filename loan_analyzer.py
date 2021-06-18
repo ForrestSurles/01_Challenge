@@ -197,7 +197,7 @@ loans = [
 # @TODO: Create an empty list called `inexpensive_loans`
 # YOUR CODE HERE!
 
-print(f"Part 4: Conditionally filter lists of loans\n")
+print(f"Part 4: Conditionally Filter Lists of Loans\n")
 inexpensive_loans = []
 expensive_loans = []
 
@@ -240,12 +240,23 @@ Output this list of inexpensive loans to a csv file
 
 """
 
+print(f"Part 5: Save the Results\n")
+
 # Set the output header
 header = ["loan_price", "remaining_months", "repayment_interval", "future_value"]
 
 # Set the output file path
-# output_path = Path("inexpensive_loans.csv")
+output_path = Path("inexpensive_loans.csv")
 
 # @TODO: Use the csv library and `csv.writer` to write the header row
 # and each row of `loan.values()` from the `inexpensive_loans` list.
 # YOUR CODE HERE!
+
+print(f"With inexpensive_loans:\nwriting to csv...")
+with open(output_path, 'w', newline='') as csvfile:
+    csvwriter = csv.writer(csvfile)
+    csvwriter.writerow(header)
+    for loan in inexpensive_loans:
+        csvwriter.writerow(loan.values())
+print(f"DONE.\n")
+line_break(50,'after')
