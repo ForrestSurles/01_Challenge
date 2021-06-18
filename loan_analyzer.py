@@ -1,6 +1,9 @@
 # coding: utf-8
+# import necessary libraries
+import csv
+from pathlib import Path
 
-# custom function for console output formatting
+# BONUS: custom function for console output formatting
 def line_break(repeats, space_location="none"):
     if space_location == "before":
         print(f"\n{'-' * repeats}")
@@ -8,10 +11,6 @@ def line_break(repeats, space_location="none"):
         print(f"{'-' * repeats}\n")
     else:
         print(f"{'-' * repeats}")
-
-# import necessary libraries
-import csv
-from pathlib import Path
 
 """Part 1: Automate the Calculations.
 
@@ -115,7 +114,7 @@ else:
     # append too expensive loan purchase analysis to loan_message for console output
     loan_message += str(f"{loan_price:,.2f}, the loan is too expensive and not worth the price.")
 
-# print fully constructed loan purchase analysis to console
+# print fully constructed loan purchase analysis message to console
 print(f"{loan_message}\n")
 
 # console output formatting
