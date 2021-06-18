@@ -106,10 +106,12 @@ print(f"Calculated fair value (npv) of the loan: $ {loan_fair_value:,.2f}")
 # YOUR CODE HERE!
 
 loan_price = loan.get("loan_price")
+loan_message = "At a purchase price of $ "
 if loan_fair_value >= loan_price:
-    print(f"The npv of the loan is $ {loan_fair_value:,.2f}. At a purchase price of $ {loan_price:,.2f}, the loan is worth at least the cost to buy it.")
+    loan_message += str(f"{loan_price:,.2f}, the loan is worth at least the cost to buy it.")
 else:
-    print(f"The npv of the loan is $ {loan_fair_value:,.2f}. At a purchase price of $ {loan_price:,.2f}, the loan is too expensive and not worth the price.")
+    loan_message += str(f"{loan_price:,.2f}, the loan is too expensive and not worth the price.")
+print(loan_message)
 line_break(50,"before")
 
 """Part 3: Perform Financial Calculations.
@@ -152,6 +154,7 @@ remaining_months = new_loan.get("remaining_months")
 
 present_value = calculate_fair_value(future_value, annual_discount_rate, remaining_months)
 print(f"The present value of the loan is: $ {present_value:,.2f}")
+line_break(50,'before')
 
 """Part 4: Conditionally filter lists of loans.
 
@@ -194,12 +197,34 @@ loans = [
 # @TODO: Create an empty list called `inexpensive_loans`
 # YOUR CODE HERE!
 
+print(f"Part 4: Conditionally filter lists of loans\n")
+inexpensive_loans = []
+expensive_loans = []
+
 # @TODO: Loop through all the loans and append any that cost $500 or less to the `inexpensive_loans` list
 # YOUR CODE HERE!
+loan_threshold = 500
+for loan in loans:
+    if loan.get("loan_price") <= loan_threshold:
+        inexpensive_loans.append(loan)
+    elif loan.get("loan_price") > loan_threshold:
+        expensive_loans.append(loan)
 
 # @TODO: Print the `inexpensive_loans` list
 # YOUR CODE HERE!
 
+def make_loan_list_message(list_of_loans):
+    loan_list_message = ""
+    for loan in list_of_loans:
+        loan_list_message += str(loan) + "\n"    
+    return loan_list_message
+
+list_of_inexpensive_loans = make_loan_list_message(inexpensive_loans)
+list_of_expensive_loans = make_loan_list_message(expensive_loans)
+
+print(f"List of inexpensive_loans:\n{list_of_inexpensive_loans}")
+print(f"List of expensive_loans:\n{list_of_expensive_loans}")
+line_break(50)
 
 """Part 5: Save the results.
 
