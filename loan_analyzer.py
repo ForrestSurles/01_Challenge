@@ -107,9 +107,9 @@ print(f"Calculated fair value (npv) of the loan: $ {loan_fair_value:,.2f}")
 
 loan_price = loan.get("loan_price")
 if loan_fair_value >= loan_price:
-    print(f"The npv of the loan is $ {loan_fair_value:,.2f}. At a purchase price of {loan_price:,.2f},\nthe loan is worth at least the cost to buy it.")
+    print(f"The npv of the loan is $ {loan_fair_value:,.2f}. At a purchase price of $ {loan_price:,.2f}, the loan is worth at least the cost to buy it.")
 else:
-    print(f"The npv of the loan is $ {loan_fair_value:,.2f}. At a purchase price of {loan_price:,.2f},\nthe loan is too expensive and not worth the price.")
+    print(f"The npv of the loan is $ {loan_fair_value:,.2f}. At a purchase price of $ {loan_price:,.2f}, the loan is too expensive and not worth the price.")
 line_break(50,"before")
 
 """Part 3: Perform Financial Calculations.
@@ -121,12 +121,6 @@ Perform financial calculations using functions.
     b. The function should return the `present_value` for the loan.
 2. Use the function to calculate the present value of the new loan given below.
     a. Use an `annual_discount_rate` of 0.2 for this new loan calculation.
-"""
-"""
-def calculate_fair_value(future_value, discount_rate, remaining_months):
-    present_value = future_value / (1 + discount_rate/12) ** remaining_months
-    return present_value
-loan_fair_value = calculate_fair_value(future_value, minimum_required_return, remaining_months)
 """
 
 # Given the following loan data, you will need to calculate the present value for the loan
@@ -142,12 +136,22 @@ new_loan = {
 #    The function should return the `present_value` for the loan.
 # YOUR CODE HERE!
 
+print(f"Part 3: Perform Financial Calculations\n")
+def calculate_fair_value(future_value, annual_discount_rate, remaining_months):
+    present_value = future_value / (1 + annual_discount_rate/12) ** remaining_months
+    return present_value
+
 
 # @TODO: Use the function to calculate the present value of the new loan given below.
 #    Use an `annual_discount_rate` of 0.2 for this new loan calculation.
 # YOUR CODE HERE!
-# print(f"The present value of the loan is: {present_value}")
 
+future_value = new_loan.get("future_value")
+annual_discount_rate = 0.20
+remaining_months = new_loan.get("remaining_months")
+
+present_value = calculate_fair_value(future_value, annual_discount_rate, remaining_months)
+print(f"The present value of the loan is: $ {present_value:,.2f}")
 
 """Part 4: Conditionally filter lists of loans.
 
