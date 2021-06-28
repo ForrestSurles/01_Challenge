@@ -1,5 +1,6 @@
-# 01_Challenge
+# *01_Challenge*
 - contains Module 1 Challenge files
+---
 ## Lessons Covered
 - Financial Programming with Python
 - Lesson 1: The Age of FinTech
